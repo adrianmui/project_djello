@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'restangular', 'Devise']);
+var app = angular.module('app', ['ui.router', 'restangular', 'Devise', 'angularModalService']);
 
 app.factory('_', ['$window', function($window) {
   return $window._;
@@ -89,10 +89,7 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
           templateUrl: 'templates/lists/index.html',
           controller: 'ListIndexCtrl'
         },
-        'stuffStuff@main.boards.show' : {
-          templateUrl: 'templates/tasks/index.html',
-          controller: 'TaskIndexCtrl'
-        }
+    
       },
       resolve: {
         boards: ['currUser','BoardService',  function(currUser, BoardService) {

@@ -9,8 +9,8 @@
   </div>
 
   <div class="container">
-    <div ng-repeat="task in list.tasks">
-      <div class="card bg-faded">
+    <div ng-repeat="task in list.tasks" >
+      <button class="card bg-faded" ng-click="show()">
         <div class="card-header">
           {{task.title}}
         </div>
@@ -25,7 +25,7 @@
             completed :: {{task.completed}}
           </div>
 
-      </div>
+      </button>
     </div>
   </div>
 </div>
