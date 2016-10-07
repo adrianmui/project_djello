@@ -1,0 +1,51 @@
+<body>
+  <nav class="navbar navbar-fixed-top navbar-dark bg-info">
+
+    <a class="navbar-brand">
+      <span><img class="navbar-left" href="http://www.pd4pic.com/images800_/slime-jelly-aspic-jello-blue-funny-creature.png" style="height: 30px; width: 30px; background-color: black"> 
+      <a href="#">DjEll0 </a></span>
+    </a>
+    <div class="pull-right">
+      <h5>
+        Welcome <%= current_user.email %>!
+        <%= link_to 'Logout', destroy_user_session_path,  method: :delete %>
+      </h5>
+    </div>
+  </nav>
+  <br>
+  <br>
+  <br>
+
+  <div class="container-fluid">
+    <!-- <ui-view></ui-view> -->
+    <div class="col-xs-8">
+      
+      <div ui-view="main-view">
+        Loading Main<br><br><br><br><br><br>
+      </div>
+        
+    
+    </div>
+
+    <div class="col-xs-4">
+      <div class="card">
+        <div ui-view="side-control">
+          Loading Side<br><br><br><br><br><br>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- <div class="col-xs-4">
+      <div class="card bg-warning">
+        <br><br><br><br><br><br>
+      </div>
+    </div>
+
+    <div class="col-xs-4">
+      <div class="card bg-danger">
+        <br><br><br><br><br><br>
+      </div>
+    </div> -->
+  </div>
+</body>

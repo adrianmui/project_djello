@@ -1,0 +1,31 @@
+<div class="card col-xs-4" ng-repeat="list in lists" style="padding:0px">
+  <div class="card-header">
+    <h4>{{list.id}} : {{list.title}} <h4>
+    <h6>{{list.description}}</h6>
+  </div>
+
+  <div class="card-block">
+     <h4>Tasks</h4>
+  </div>
+
+  <div class="container">
+    <div ng-repeat="task in list.tasks">
+      <div class="card bg-faded">
+        <div class="card-header">
+          {{task.title}}
+        </div>
+
+        
+          <div class="card-block">
+            {{ task.description}}
+            <br>
+            votes :: {{task.votes}}
+
+            <br>
+            completed :: {{task.completed}}
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>

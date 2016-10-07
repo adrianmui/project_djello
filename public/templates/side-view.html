@@ -1,0 +1,20 @@
+<div class="card-header">
+  <h5> Board Control </h5>
+</div>
+
+<button class="btn btn-md btn-outline-primary" ui-sref="main.boards">All Boards</button>
+
+<div class="card-block">
+  <div ng-repeat="board in boards">  
+
+    <button class="col-xs-4" ui-sref="main.boards.show({id:board.id})"> 
+      Board: {{board.title}} 
+    </button>
+  </div>
+</div>
+
+<div class="card-block">
+  <button ng-click="addBoard()" class='btn btn-outline-primary btn-sm'> New Board</button>
+  <a href='#' class='btn btn-outline-danger btn-sm'> Delete Board</a>
+</div>
+
