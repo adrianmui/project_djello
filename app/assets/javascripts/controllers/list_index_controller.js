@@ -1,25 +1,69 @@
 app.controller('ListIndexCtrl',
-  ['$scope', '$stateParams', 'boards', 'ListService', 'currUser', 'ModalService',
-  function($scope, $stateParams, boards, ListService, currUser, ModalService) {
-    $scope.currentUser = currUser;
+  ['$scope', '$stateParams', 'boards', 'ListService', 'TaskService', 'currUser', 'ModalService', 'TaskService',
+  function($scope, $stateParams, boards, ListService, TaskService, currUser, ModalService, TaskService) {
 
-    console.log("still logged in through: ", 
-      $scope.currentUser);
-    console.log('you are in list index controller');
+  $scope.currentUser = currUser;
 
-    $scope.lists = ListService.get($stateParams.id);
-    
-    console.log("lists: ", $scope.lists);    
+  console.log("still logged in through: ", 
+    $scope.currentUser);
+  console.log('you are in list index controller');
 
-   $scope.show = function() {
+  $scope.lists = function() {
+    return ListService.get($stateParams.id);
+  };
 
+  $scope.tasks = function() {
+    return TaskService.getAll();
+  };
+
+
+  $scope.TaskParams = {};  
+
+  $scope.deleteList = function(list) {
+    ListService.destroy(list);
+  };
+
+  $scope.deleteTask = function(task) {
+    TaskService.destroy(task);
+  }
+
+  $scope.showNewTaskModal = function(list_id) {
     ModalService.showModal({
-      templateUrl: "templates/modal.html",
-      controller: "ModalController",
-    }).then(function(modal) {
+      templateUrl: "templates/modals/tasks/new.html",
+      controller: "TaskNewModalController",
+      inputs: {
+        TaskService: function() {
+          return TaskService;
+        }, 
+        listId: function() {
+          return list_id;
+        }
+      }
+    }).then(function(modal) {    
       modal.element.show();
       modal.close.then(function(result) {
-        $scope.message = "You said " + result;
+        $scope.TaskParams = result;
+      });
+    });
+
+  };
+
+  $scope.showEditTaskModal = function(task) {
+    ModalService.showModal({
+      templateUrl: "templates/modals/tasks/edit.html",
+      controller: "TaskEditModalController",
+      inputs: {
+        task: function() {
+          return task;
+        },
+        TaskService: function() {
+          return TaskService;
+        }
+      }
+    }).then(function(modal) {    
+      modal.element.show();
+      modal.close.then(function(result) {
+        $scope.TaskParams = result;
       });
     });
 
@@ -27,15 +71,5 @@ app.controller('ListIndexCtrl',
 
     
 }]);
-
-app.controller('ModalController', function($scope, close) {
-
-  console.log("huehue");
-  
- $scope.close = function(result) {
-  close(result, 10000); // close, but give 500ms for bootstrap to animate
- };
-
-});
 
 

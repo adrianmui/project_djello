@@ -1,18 +1,30 @@
-<div class="card col-xs-4" ng-repeat="list in lists" style="padding:0px">
+<div class="card col-xs-3" ng-repeat="list in lists()" style="padding:0px">
   <div class="card-header">
-    <h4>{{list.id}} : {{list.title}} <h4>
-    <h6>{{list.description}}</h6>
-  </div>
+    
+      <h4>
+      {{list.id}} : {{list.title}} 
+
+      </h4>
+     
+      <h6>
+        {{list.description}}
+         
+      </h6>
+    
+      <a class="btn pull-right fa fa-trash-o" aria-hidden="true" ng-click="deleteList(list)"></a>
+  </div> 
 
   <div class="card-block">
      <h4>Tasks</h4>
   </div>
 
-  <div class="container">
-    <div ng-repeat="task in list.tasks" >
-      <button class="card bg-faded" ng-click="show()">
+  
+    <div class="col-xs-12" ng-repeat="task in tasks() | filter:{list_id: list.id}">
+      <a class="btn pull-right fa fa-trash-o" aria-hidden="true" ng-click="deleteTask(task)"></a>
+      <button class="card bg-faded" ng-click="showEditTaskModal(task)">
         <div class="card-header">
-          {{task.title}}
+          {{task.title}} 
+
         </div>
 
         
@@ -27,5 +39,6 @@
 
       </button>
     </div>
-  </div>
+  
+    <button class="btn btn-outline-warning" ng-click="showNewTaskModal(list.id)"> Add New Task </button>
 </div>

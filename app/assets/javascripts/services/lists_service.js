@@ -1,7 +1,7 @@
 app.factory('ListService',
   ['Restangular', '_',
-  function(Restangular) {
-  var _list;
+  function(Restangular, _) {
+  var _lists;
 
 
   var stub = {};
@@ -26,7 +26,17 @@ app.factory('ListService',
     return _.find(_lists, {id: parseInt(board_id)});
   }
 
-  //gets lists with current user
+  stub.destroy = function(list) {
+    return list.remove().then(function(response) {
+      var unwanted = _.find(_lists, {id: list.id});
+      _lists = _.without(_lists, unwanted);
+      console.log("list destroyed");
+    })
+  }
+
+  stub.create = function() {
+
+  };
 
   return stub;
 }]);

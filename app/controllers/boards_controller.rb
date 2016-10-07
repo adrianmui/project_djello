@@ -7,6 +7,13 @@ class BoardsController < ApplicationController
     end
   end
 
+  def show
+    @board = Board.find_by_id(params[:id])
+    respond_to do |format|
+      format.json { render json: @board }
+    end
+  end
+
   def create
     @board = current_user.boards.build(board_params)
 
@@ -15,6 +22,15 @@ class BoardsController < ApplicationController
         format.json { render json: @board.to_json }
       else
         format.json { render json: {error: "Couldn't created board"}, status: 400}
+      end
+    end
+  end
+
+  def update
+    @board = Board.find_by_id(params[:id])
+    if @board.update(board_params)
+      respond_to do |format|
+        format.json { render json: @board.to_json, status: 200}
       end
     end
   end

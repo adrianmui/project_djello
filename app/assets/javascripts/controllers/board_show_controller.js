@@ -8,8 +8,14 @@ app.controller('BoardShowCtrl',
     console.log('you are in board show controller');
 
     $scope.board = BoardService.find($stateParams.id);
-    
-    
+  
+
+    //watches for change of board title name.
+    $scope.$watch('board.title', function(newVal, oldVal) {
+    if (newVal !== oldVal) {
+      BoardService.edit($scope.board, {title: $scope.board.title})
+    }
+  });
     
 }]);
 

@@ -31,8 +31,16 @@ app.factory('BoardService',
       title: boardParams.title,
       user_id: user_id
     }).then( function(response) {
-      _boards.unshift(response)
+      _boards.unshift(response);
     });
+  };
+
+  stub.edit = function(board, boardParams) {
+    return Restangular.one("boards", board.id).patch(boardParams)
+      .then(function(response) {
+        // _.extend(_.findWhere(_tasks, { id: response.id }), response);
+        console.log("changing edited board..");
+      });
   };
 
   //gets boards with current user

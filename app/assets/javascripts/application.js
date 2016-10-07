@@ -14,8 +14,9 @@
 //= require jquery_ujs
 //= require angular
 //= require angular-ui-router
-//= require angular-modal-service
+//= require angular-modal-service.min
 //= require angular-devise
+//= require xeditable
 //= require lodash.min
 //= require restangular
 //= require_tree .

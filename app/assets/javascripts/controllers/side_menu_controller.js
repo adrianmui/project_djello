@@ -12,7 +12,6 @@ app.controller('SideMenuCtrl',
   $scope.boardParams = {};
 
   console.log('you are in Side Menu controller');
-  console.log('currUser: ', currUser);
   console.log('boards: ', boards);
   
   $scope.currentUser = currUser;
@@ -26,7 +25,7 @@ app.controller('SideMenuCtrl',
   $scope.addBoard = function() {
     $scope.boardParams = {
       title: "newboard"
-    }
+    };
     BoardService.create($scope.boardParams, currUser.id);
   };
 

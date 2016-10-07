@@ -1,4 +1,5 @@
-var app = angular.module('app', ['ui.router', 'restangular', 'Devise', 'angularModalService']);
+var app = angular.module('app', 
+  ['ui.router', 'restangular', 'Devise', 'angularModalService', 'xeditable' ]);
 
 app.factory('_', ['$window', function($window) {
   return $window._;
@@ -103,7 +104,15 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
             .then(function() { 
               return ListService.getAll();
             })
+        }],
+
+        tasks: ['TaskService' , function(TaskService) {
+          return TaskService.load()
+            .then(function() { 
+              return TaskService.getAll();
+            })
         }]
+
       }
     })
 }]);
