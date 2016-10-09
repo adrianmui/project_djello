@@ -23,8 +23,8 @@ app.factory('ListService',
   };
 
   stub.find = function(list_id) {
-    return _.find(_lists, {id: parseInt(board_id)});
-  }
+    return _.find(_lists, {id: parseInt(list_id)});
+  };
 
   stub.destroy = function(list) {
     return list.remove().then(function(response) {
@@ -32,11 +32,16 @@ app.factory('ListService',
       _lists = _.without(_lists, unwanted);
       console.log("list destroyed");
     })
-  }
-
-  stub.create = function() {
-
   };
+
+  stub.create = function(listParams) {
+    return Restangular.all("lists").post(listParams)
+      .then(function(response) {
+        _lists.push(response);
+        console.log("added new list");
+      });
+  };
+
 
   return stub;
 }]);

@@ -3,9 +3,6 @@ app.controller('ListIndexCtrl',
   function($scope, $stateParams, boards, ListService, TaskService, currUser, ModalService, TaskService) {
 
   $scope.currentUser = currUser;
-
-  console.log("still logged in through: ", 
-    $scope.currentUser);
   console.log('you are in list index controller');
 
   $scope.lists = function() {
@@ -15,7 +12,6 @@ app.controller('ListIndexCtrl',
   $scope.tasks = function() {
     return TaskService.getAll();
   };
-
 
   $scope.TaskParams = {};  
 
@@ -55,6 +51,9 @@ app.controller('ListIndexCtrl',
       inputs: {
         task: function() {
           return task;
+        },
+        ListService: function() {
+          return ListService;
         },
         TaskService: function() {
           return TaskService;

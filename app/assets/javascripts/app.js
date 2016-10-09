@@ -5,6 +5,12 @@ app.factory('_', ['$window', function($window) {
   return $window._;
 }]);
 
+app.run(function(editableOptions, editableThemes) {
+  editableOptions.theme = 'default';
+   editableThemes['default'].submitTpl = '<button type="submit" class="btn btn-md btn-outline-primary"> Submit</button>';
+   editableThemes['default'].cancelTpl = '<button type="submit" class="btn btn-md btn-outline-danger "> Cancel</button>';
+});
+
 // CSRF support
 app.config(
   ["$httpProvider",

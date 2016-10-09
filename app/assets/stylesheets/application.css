@@ -2,7 +2,19 @@
   background-color: rgba(0,0,0,0.8);
   }
 
+.completed-btn {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color: #3b5998;
+}
+.completed-btn:focus {
+    border: none;
+}
 
+* {
+  font-family: 'Open Sans', sans-serif;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -49,6 +61,7 @@
 }
 
 .editable-buttons {
+  
   display: inline-block;
   vertical-align: top;
 }

@@ -1,5 +1,10 @@
-<h1> <a editable-text="board.title" e-label=""> {{ board.title || 'empty' }} </a></h1>
+<h1> 
+  <a editable-text="board.title" e-label=""> {{ board.title || 'empty' }} </a>
+</h1>
 
 <div ui-view="stuff">Loading</div>
 
-<button ng-click="AddList()" class="btn btn-md btn-primary active">Add New List</button>
+<button
+  editable-text="listParams.title"
+  onbeforesave="newList($data)"
+  class="btn btn-md btn-primary active">Add New List</button>

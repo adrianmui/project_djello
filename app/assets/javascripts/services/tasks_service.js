@@ -23,13 +23,14 @@ app.factory('TaskService',
     return _.where(_tasks, {user_id: parseInt(list_id)});     
   };
 
-  stub.find = function(task_id) {
+  stub.find = function(task_id) { 
     return _.find(_tasks, {id: parseInt(board_id)});
-  }
+  };
 
   stub.edit = function(task, taskParams) {
     return Restangular.one("tasks", task.id).patch(taskParams)
       .then(function(response) {
+        console.log(response);
         _.extend(_.findWhere(_tasks, { id: response.id }), response);
         console.log("changing edited task..");
       });
@@ -41,7 +42,7 @@ app.factory('TaskService',
         _tasks.push(response);
         console.log("added new task");
       });
-  }
+  };
 
   stub.destroy = function(task) {
     return task.remove().then(function(response) {
@@ -49,7 +50,7 @@ app.factory('TaskService',
       _tasks = _.without(_tasks, unwanted);
       console.log("task destroyed");
     })
-  }
+  };
   
 
   //gets tasks with current user
