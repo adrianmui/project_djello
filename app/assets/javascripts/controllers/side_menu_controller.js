@@ -6,10 +6,11 @@
 // 4. (opt) show newsfeed/activity
 
 app.controller('SideMenuCtrl',
-  ['$scope', 'currUser', 'boards', 'BoardService',
-  function($scope, currUser, boards, BoardService) {
+  ['$scope', 'currUser', 'boards', 'BoardService', '$state',
+  function($scope, currUser, boards, BoardService, $state) {
   
   $scope.boardParams = {};
+  $scope.selectedBoard;
 
   console.log('you are in Side Menu controller');
   console.log('boards: ', boards);
@@ -28,6 +29,11 @@ app.controller('SideMenuCtrl',
     };
     BoardService.create($scope.boardParams, currUser.id);
   };
+
+  $scope.changeView = function(){
+    $state.go('main.boards.show', {id: parseInt($scope.selectedBoard.id)});
+    // $state.go('main.boards.show({id:' + parseInt($scope.selectedBoard.id) + '})'); // path not hash
+  }
 
   
 

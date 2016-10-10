@@ -27,20 +27,20 @@
         </div>
 
         
-          <div class="card-block">
-            {{ task.description}}
-            <br>
-            votes :: {{task.votes}}
-
-            <br>
-            completed :: {{task.completed}}
-          </div>
+        <div class="card-block">
+          {{ task.description}}
+          <br>
+          votes :: {{task.votes}}
+          <br>
+          completed :: {{task.completed}}
+        </div>
 
       </button>
     </div>
 
-    <button class="btn btn-outline-warning" ng-click="showNewTaskModal(list.id)"> Add New Task </button>
-
+    <div class="container-fluid" style="margin-bottom: 10px">
+      <button class="btn btn-warning active center-block" ng-click="showNewTaskModal(list.id)"> Add New Task </button>
+    </div>
   </div>
   </div>
 </div>

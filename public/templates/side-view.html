@@ -4,13 +4,18 @@
 
 <button class="btn btn-md btn-outline-primary" ui-sref="main.boards">All Boards</button>
 
+
+
 <div class="card-block">
-  <div ng-repeat="board in boards">  
+  <select ng-change='changeView()' ng-model="selectedBoard" class="form-control"
+          ng-options="board.title for board in boards">
+  </select>
+  <!-- <div ng-repeat="board in boards">  
 
     <button class="col-xs-12" ui-sref="main.boards.show({id:board.id})"> 
       Board: {{board.title}}
     </button>
-  </div>
+  </div> -->
 </div>
 
 <div class="card-block">
