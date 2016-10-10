@@ -2,7 +2,7 @@ app.factory('BoardService',
   ['Restangular', '_',
   function(Restangular) {
   var _boards;
-
+  var _currBoard;
 
   var stub = {};
 
@@ -32,7 +32,16 @@ app.factory('BoardService',
       user_id: user_id
     }).then( function(response) {
       _boards.unshift(response);
+      return response;
     });
+  };
+
+  stub.destroy = function(board) {
+    return board.remove().then(function(response) {
+      var unwanted = _.find(_boards, {id: board.id});
+      _boards = _.without(_boards, unwanted);
+      console.log("board destroyed");
+    })
   };
 
   stub.edit = function(board, boardParams) {
@@ -41,6 +50,14 @@ app.factory('BoardService',
         // _.extend(_.findWhere(_tasks, { id: response.id }), response);
         console.log("changing edited board..");
       });
+  };
+
+  stub.setCurrBoard = function(board) {
+    _currBoard = board;
+  };
+
+  stub.getCurrBoard = function() {
+    return _currBoard;
   };
 
   //gets boards with current user

@@ -8,6 +8,7 @@
     outline: none;
     color: #3b5998;
 }
+
 .completed-btn:focus {
     border: none;
 }

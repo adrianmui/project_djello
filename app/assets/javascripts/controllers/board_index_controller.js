@@ -7,9 +7,10 @@ app.controller('BoardIndexCtrl',
       $scope.currentUser);
     console.log('you are in board controller');
 
+
     $scope.boards = function() {
       return BoardService.getAll();
-    }
+    };
     
     
 }]);

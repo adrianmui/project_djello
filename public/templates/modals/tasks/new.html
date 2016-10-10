@@ -1,0 +1,52 @@
+<div class="modal" id="moodle">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">New Task</h4>
+      </div>
+
+      <div class="modal-body">
+
+        <form class="form">
+          <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">Title</label>
+            
+              <input type="text" class="form-control" id="title" placeholder="{{task.title}}" ng-model="taskParams.title">
+            
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">Description</label>
+            
+              <input type="text" class="form-control" id="description" placeholder="{{task.description}}" ng-model="taskParams.description">
+            
+          </div>
+
+          <div class="form-group">
+            <label for="votes" class="col-sm-2 control-label">Votes</label>
+            
+              <input type="number" class="form-control" id="votes" ng-model="taskParams.votes" min="0" max="10">
+            
+          </div>
+
+          <div class="form-group">
+            <label for="completed" class="col-sm-2 control-label">completed</label>
+            
+              <select ng-model="taskParams.completed" class="form-control">
+                <option ng-value="true">Done</option>
+                <option ng-value="false">Incomplete</option>
+              </select>
+            
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="close('No')" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+        <button type="button" ng-click="close('Yes')" class="btn btn-outline-success" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
