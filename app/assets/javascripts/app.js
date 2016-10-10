@@ -6,11 +6,11 @@ angular.module('lodash', []).factory('_', ['$window', function($window) {
   return $window._;
 }]);
 
-app.run(function(editableOptions, editableThemes) {
+app.run(['editableOptions', 'editableThemes', function(editableOptions, editableThemes) {
   editableOptions.theme = 'default';
    editableThemes['default'].submitTpl = '<button type="submit" class="btn btn-md btn-outline-primary"> Submit</button>';
    editableThemes['default'].cancelTpl = '<button type="submit" class="btn btn-md btn-outline-danger "> Cancel</button>';
-});
+}]);
 
 // CSRF support
 app.config(
@@ -124,7 +124,6 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
     })
 }]);
 
-
-app.run(function($rootScope){
+app.run(['$rootScope', function($rootScope){
   $rootScope.$on("$stateChangeError", console.log.bind(console));
-});
+}]);
