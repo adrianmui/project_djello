@@ -1,5 +1,6 @@
 var app = angular.module('app', 
-  ['ui.router', 'restangular', 'Devise', 'angularModalService', 'xeditable' ]);
+  ['ui.router', 'restangular', 'Devise', 'angularModalService', 'xeditable', '_']
+  );
 
 app.factory('_', ['$window', function($window) {
   return $window._;
