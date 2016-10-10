@@ -1,6 +1,6 @@
 app.factory('TaskService',
   ['Restangular', '_',
-  function(Restangular) {
+  function(Restangular, _) {
   var _tasks;
 
 
