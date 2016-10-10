@@ -1,8 +1,8 @@
 var app = angular.module('app', 
-  ['ui.router', 'restangular', 'Devise', 'angularModalService', 'xeditable', '_']
+  ['ui.router', 'restangular', 'Devise', 'angularModalService', 'xeditable', 'lodash']
   );
 
-app.factory('_', ['$window', function($window) {
+angular.module('lodash', []).factory('_', ['$window', function($window) {
   return $window._;
 }]);
 
