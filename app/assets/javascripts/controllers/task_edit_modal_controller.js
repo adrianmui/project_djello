@@ -1,4 +1,5 @@
 app.controller('TaskEditModalController',
+    ['$scope', 'close', 'task', 'TaskService', 'ListService',
     function($scope, close, task, TaskService, ListService) {
 
 
@@ -27,4 +28,4 @@ app.controller('TaskEditModalController',
   $element.modal('hide');
   close($scope.taskParams,100);
  };
-});
+}]);

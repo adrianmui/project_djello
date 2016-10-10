@@ -1,6 +1,6 @@
 app.factory('BoardService',
   ['Restangular', '_',
-  function(Restangular) {
+  function(Restangular, _) {
   var _boards;
   var _currBoard;
 
