@@ -9,9 +9,9 @@ app.controller('TaskNewModalController',
   $scope.close = function() {
     // this is where you submit
     $scope.taskParams.completed = ($scope.taskParams.completed === true);
-    $scope.taskParams.list_id = listId();
+    $scope.taskParams.list_id = listId;
 
-    TaskService().create($scope.taskParams);
+    TaskService.create($scope.taskParams);
 
     close($scope.taskParams, 100);
   }

@@ -5,8 +5,8 @@ app.controller('TaskEditModalController',
 
   console.log("you have entered Edit TaskModal");
 
-  $scope.task = task();
-  $scope.listName = ListService().find($scope.task.list_id).title;
+  $scope.task = task;
+  $scope.listName = ListService.find($scope.task.list_id).title;
   $scope.taskParams = {
     title: $scope.task.title,
     description: $scope.task.description,
@@ -18,7 +18,7 @@ app.controller('TaskEditModalController',
     // this is where you submit
     // $scope.taskParams.completed = ($scope.taskParams.completed === true);
     if (option === 'Yes') {
-      TaskService().edit($scope.task, $scope.taskParams);
+      TaskService.edit($scope.task, $scope.taskParams);
     }
 
     close($scope.taskParams, 100);

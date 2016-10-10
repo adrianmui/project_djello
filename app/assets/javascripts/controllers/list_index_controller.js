@@ -28,12 +28,8 @@ app.controller('ListIndexCtrl',
       templateUrl: "templates/modals/tasks/new.html",
       controller: "TaskNewModalController",
       inputs: {
-        TaskService: ['TaskService', function(TaskService) {
-          return TaskService;
-        }], 
-        listId: function() {
-          return list_id;
-        }
+        TaskService: TaskService,
+        listId: list_id
       }
     }).then(function(modal) {    
       modal.element.show();
@@ -49,15 +45,9 @@ app.controller('ListIndexCtrl',
       templateUrl: "templates/modals/tasks/edit.html",
       controller: "TaskEditModalController",
       inputs: {
-        task: function() {
-          return task;
-        },
-        ListService: ['ListService', function(ListService) {
-          return ListService;
-        }],
-        TaskService: ['TaskService', function(TaskService) {
-          return TaskService;
-        }]
+        task: task,
+        ListService: ListService,
+        TaskService: TaskService
       }
     }).then(function(modal) {    
       modal.element.show();
