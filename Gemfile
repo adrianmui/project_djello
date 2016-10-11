@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'pry'
 gem 'pg'
 gem 'angularjs-rails'
 gem 'angular_rails_csrf'

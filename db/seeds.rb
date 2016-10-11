@@ -2,9 +2,11 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
+require 'pry'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+UserBoarding.all.destroy_all
 Task.all.destroy_all
 List.all.destroy_all
 Board.all.destroy_all
@@ -13,7 +15,7 @@ User.all.each do |user|
   
   3.times do |n|
     puts 'created boards for user #{n}th time'
-    user.boards.create!({title: Faker::Pokemon.name});
+    user.boards.create!({title: Faker::Pokemon.name, user_id: user.id});
   end
   user.boards.each do |board|
     3.times do |m|

@@ -4,13 +4,14 @@
     <h3>Boards Directory</h3>
 
 
-    <h6> Sample List Description</h6>
+    <h6> Sample Something Description</h6>
   </div>
 
   <div class="card-block bg-faded">
     <div class="card col-xs-3" ng-repeat="board in boards()">
       <div class="card-header">
-        {{ board.title }}
+        <h3>{{ board.title }}</h3>
+        <h6> belongs to: user{{board.user_id}}</h6>
       </div>
       <div class="card-block">
         <a ui-sref='main.boards.show({id: board.id})'>View here </a>

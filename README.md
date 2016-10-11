@@ -7,6 +7,9 @@ Adrian.
 
 ## Pseudo Code
 
+User has many boards.
+Boards have many Users as Members.
+
 ### Users.
 
   Devise Authentication.

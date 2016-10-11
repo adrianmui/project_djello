@@ -51,6 +51,10 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
         'side-control': {
           templateUrl: '/templates/side-view.html',
           controller: 'SideMenuCtrl'
+        },
+        'members-control' : {
+          templateUrl: '/templates/members-control.html',
+          controller: 'MemberMenuCtrl'
         }
       },
       resolve: {
@@ -61,6 +65,13 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
           return BoardService.load()
             .then(function() {
               return BoardService.get(currUser.id);
+            })
+        }],
+        members: ['MemberService', function(MemberService){
+          return MemberService.load()
+            .then(MemberService.loadUserBoarding())
+            .then(function() {
+              return MemberService.getAll();
             })
         }]
       }

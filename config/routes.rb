@@ -7,9 +7,11 @@ Rails.application.routes.draw do
 
   scope :api do
     scope :v1 do
+      resources :users, only: [:index]
       resources :boards
       resources :lists
       resources :tasks
+      resources :user_boardings
     end
   end
 
